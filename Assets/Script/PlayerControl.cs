@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class PlayerControl : MonoBehaviour
     private Rigidbody2D rb;
     [SerializeField] private float speed;
     [SerializeField] private float jumpForce;
+    private bool onGround = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,14 +34,7 @@ public class PlayerControl : MonoBehaviour
 
         transform.Translate(Vector3.right * inputHorizontal * speed * Time.deltaTime);
 
-        bool onGround;
-
-        if (rb.velocity.y == 0)
-        {
-            animator.SetBool("isOnGround", true);
-            onGround = true;
-        }
-        else
+        if (Mathf.Abs(rb.velocity.y) > 0.1f)
         {
             animator.SetBool("isOnGround", false);
             onGround = false;
@@ -50,6 +45,15 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
-    
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (Mathf.Abs(rb.velocity.y) < 0.1f)
+        {
+            animator.SetBool("isOnGround", true);
+            onGround = true;
+        }
+    }
+
+
 
 }
