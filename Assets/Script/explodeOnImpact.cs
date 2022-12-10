@@ -22,46 +22,74 @@ public class explodeOnImpact : MonoBehaviour
     {
         if (wasLaunched)
         {
-            var flightTime = calculateFlightTime();
-            var velocityX = (target.position.x - transform.position.x) / flightTime;
-            rb.simulated = true;
-            rb.velocity = new Vector3(velocityX, launchPower, 0);
-            StartCoroutine("cancelColliderTriggerStatus");
-            wasLaunched = false;
+            var xSpeed = calculateVelocityX();
+            xSpeed = Mathf.Max(Mathf.Min(xSpeed, launchPower), -launchPower);
+            
+            if (xSpeed != float.NaN)
+            {
+                LaunchAcorn(xSpeed);
+            }
         }
     }
 
-    float calculateFlightTime()
+    private void LaunchAcorn(float velocityX)
+    {
+        rb.simulated = true;
+        rb.velocity = new Vector3(velocityX, launchPower, 0);
+        StartCoroutine("cancelColliderTriggerStatus");
+        wasLaunched = false;
+    }
+
+    private float calculateFlightTime()
     { 
         var s = target.position.y - transform.position.y;
         var u = launchPower;
         var a = Physics2D.gravity.y;
 
-        var root1 = (-u + Mathf.Sqrt((u * u) + (2 * a * s))) / a;
+        //var root1 = (-u + Mathf.Sqrt((u * u) + (2 * a * s))) / a;
         var root2 = (-u - Mathf.Sqrt((u * u) + (2 * a * s))) / a;
 
-        if (root1 <= 0)
-            return root2;
-        else
-            return root1;
-   
+        return root2;
+    }
+
+    private float calculateVelocityX()
+    {
+        var flightTime = calculateFlightTime();
+        var velocityX = (target.position.x - transform.position.x) / flightTime;
+        return velocityX;
     }
 
     private IEnumerator cancelColliderTriggerStatus()
     {
         yield return new WaitForSeconds(0.1f);
         GetComponent<CapsuleCollider2D>().isTrigger = false;
+        yield return new WaitForSeconds(3);
+        ResetAcorn();
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.name == "Portos")
             GameObject.FindObjectOfType<HealthBarManager>().Damage(1);
+        ResetAcorn();
+        
+    }
 
+    private void ResetAcorn()
+    {
+        StopAllCoroutines();
         gameObject.SetActive(false);
         GetComponent<CapsuleCollider2D>().isTrigger = true;
         rb.simulated = false;
-        transform.localPosition = new Vector3(0.5f,0.5f,0);
+        transform.localPosition = new Vector3(0.2f, -0.2f, 0);
         parent.GetComponent<Animator>().SetBool("hasAcorn", true);
     }
+
+    private void OnBecameInvisible()
+    {
+        ResetAcorn();
+    }
+
+    
 }
