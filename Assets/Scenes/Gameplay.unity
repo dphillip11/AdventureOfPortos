@@ -252,6 +252,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8753287696069693736, guid: 93a231d9af3411c4aafef7c52429659a, type: 3}
   m_PrefabInstance: {fileID: 8753287696588180967}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1221666143
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1221666144}
+  m_Layer: 0
+  m_Name: RayCastAnchor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1221666144
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1221666143}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.36, y: -0.25, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1936514223}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1344553665
 GameObject:
   m_ObjectHideFlags: 0
@@ -549,6 +580,7 @@ GameObject:
   - component: {fileID: 1936514221}
   - component: {fileID: 1936514220}
   - component: {fileID: 1936514224}
+  - component: {fileID: 1936514225}
   m_Layer: 0
   m_Name: Hedgehog
   m_TagString: Untagged
@@ -655,7 +687,8 @@ Transform:
   m_LocalPosition: {x: 0, y: -5.84, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1221666144}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -680,6 +713,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1936514225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1936514219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ec224f99fe2a5945b6197d35d089975, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rayLength: 2
 --- !u!1001 &3312146897112789501
 PrefabInstance:
   m_ObjectHideFlags: 0
