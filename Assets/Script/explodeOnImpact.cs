@@ -5,7 +5,9 @@ using UnityEngine;
 public class explodeOnImpact : MonoBehaviour
 {
     public bool wasLaunched = false;
-    public float launchPower;
+    public float launchPowerX;
+    public float launchPowerY;
+    public Vector3 acornOffset = new Vector3(0.2f, -0.2f, 0);
     private Rigidbody2D rb;
     private Transform parent;
     private Transform target;
@@ -23,7 +25,7 @@ public class explodeOnImpact : MonoBehaviour
         if (wasLaunched)
         {
             var xSpeed = calculateVelocityX();
-            xSpeed = Mathf.Max(Mathf.Min(xSpeed, launchPower), -launchPower);
+            xSpeed = Mathf.Max(Mathf.Min(xSpeed, launchPowerX), -launchPowerX);
             
             if (xSpeed != float.NaN)
             {
@@ -35,7 +37,7 @@ public class explodeOnImpact : MonoBehaviour
     private void LaunchAcorn(float velocityX)
     {
         rb.simulated = true;
-        rb.velocity = new Vector3(velocityX, launchPower, 0);
+        rb.velocity = new Vector3(velocityX, launchPowerY, 0);
         StartCoroutine("cancelColliderTriggerStatus");
         wasLaunched = false;
     }
@@ -43,7 +45,7 @@ public class explodeOnImpact : MonoBehaviour
     private float calculateFlightTime()
     { 
         var s = target.position.y - transform.position.y;
-        var u = launchPower;
+        var u = launchPowerY;
         var a = Physics2D.gravity.y;
 
         //var root1 = (-u + Mathf.Sqrt((u * u) + (2 * a * s))) / a;
@@ -82,7 +84,7 @@ public class explodeOnImpact : MonoBehaviour
         gameObject.SetActive(false);
         GetComponent<CapsuleCollider2D>().isTrigger = true;
         rb.simulated = false;
-        transform.localPosition = new Vector3(0.2f, -0.2f, 0);
+        transform.localPosition = acornOffset;
         parent.GetComponent<Animator>().SetBool("hasAcorn", true);
     }
 

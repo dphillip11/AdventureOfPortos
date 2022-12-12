@@ -39,7 +39,7 @@ public class PlayerControl : MonoBehaviour
             animator.SetBool("isOnGround", false);
             onGround = false;
         }
-        if (onGround && Input.GetAxis("Vertical") > 0)
+        if (onGround && Input.GetKeyDown(KeyCode.UpArrow))
         {
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
