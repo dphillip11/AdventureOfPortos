@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 1299858456727259188}
   - component: {fileID: 7935986252193557751}
   - component: {fileID: 6140038257425085096}
+  - component: {fileID: 1604028655}
+  - component: {fileID: 1604028656}
   m_Layer: 0
   m_Name: MysteryBox
   m_TagString: Untagged
@@ -42,7 +44,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3369756988982098786}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -54,7 +56,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 7
+  m_Constraints: 4
 --- !u!61 &7935986252193557751
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -133,3 +135,39 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!231 &1604028655
+SpringJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3369756988982098786}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 1
+  m_ConnectedRigidBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_AutoConfigureConnectedAnchor: 1
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 1.64, y: -3.56}
+  m_AutoConfigureDistance: 0
+  m_Distance: 0.1
+  m_DampingRatio: 0
+  m_Frequency: 3
+--- !u!114 &1604028656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3369756988982098786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 456d16b563249cb4abceebaf2f2772ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabs:
+  - {fileID: 7768453786918024505, guid: ba8a90ec725d32c419d03a7f34eca22c, type: 3}
+  - {fileID: 7087871932030282647, guid: cb4b4cbcf7854c44b8946c29bc6ff982, type: 3}
+  color: {r: 0.7264151, g: 0.44334254, b: 0.09251513, a: 1}

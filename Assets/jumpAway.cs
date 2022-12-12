@@ -7,7 +7,10 @@ public class jumpAway : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.SetBool("isJumping", true);
+        animator.SetBool("hasJumped", false);
+        float yJump = Random.Range(10, 15);
+        float xJump = Random.Range(3, 6) * animator.transform.localScale.x;
+        animator.GetComponent<Rigidbody2D>().AddForce(new Vector2(xJump, yJump), ForceMode2D.Impulse);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

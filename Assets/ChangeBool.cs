@@ -8,6 +8,7 @@ public class ChangeBool : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.SetBool("FiringAcorn", false);
+        animator.SetBool("hasJumped", false);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

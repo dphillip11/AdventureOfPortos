@@ -40,4 +40,11 @@ public class SquirrelEscape : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        RaycastHit2D raycastHit = Physics2D.Raycast(transform.position, Vector2.down);
+        if (raycastHit.collider != null)
+            anim.SetBool("hasJumped", true);
+    }
+
 }

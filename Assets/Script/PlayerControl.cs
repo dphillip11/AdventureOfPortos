@@ -34,21 +34,30 @@ public class PlayerControl : MonoBehaviour
 
         transform.Translate(Vector3.right * inputHorizontal * speed * Time.deltaTime);
 
-        if (Mathf.Abs(rb.velocity.y) > 0.1f)
+        if (Mathf.Abs(rb.velocity.y) < -0.1f && onGround)
         {
-            animator.SetBool("isOnGround", false);
-            onGround = false;
+            RaycastHit2D raycastHit = Physics2D.Raycast(new Vector2(transform.position.x, GetComponent<BoxCollider2D>().bounds.min.y), Vector2.down * 0.2f);
+            Debug.DrawRay(new Vector2(transform.position.x, GetComponent<BoxCollider2D>().bounds.min.y), Vector2.down * 0.2f);
+            if (raycastHit.collider == null)
+            {
+                animator.SetBool("isOnGround", false);
+                onGround = false;
+            }
         }
         if (onGround && Input.GetKeyDown(KeyCode.UpArrow))
         {
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            onGround = false;
+            animator.SetBool("isOnGround", false);
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (Mathf.Abs(rb.velocity.y) < 0.1f)
-        {
+        RaycastHit2D raycastHit = Physics2D.Raycast(new Vector2(transform.position.x, GetComponent<BoxCollider2D>().bounds.min.y), Vector2.down * 0.2f);
+        Debug.DrawRay(new Vector2(transform.position.x, GetComponent<BoxCollider2D>().bounds.min.y), Vector2.down * 0.2f);
+        if (raycastHit.collider != null)
+        { 
             animator.SetBool("isOnGround", true);
             onGround = true;
         }
