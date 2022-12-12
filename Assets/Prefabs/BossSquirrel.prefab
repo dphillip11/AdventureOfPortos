@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 7252984546563174147}
   - component: {fileID: 7252984546563174146}
   - component: {fileID: 7340493191862386542}
+  - component: {fileID: 5641263199491183855}
   m_Layer: 0
   m_Name: BossSquirrel
   m_TagString: Untagged
@@ -226,6 +227,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   child: {fileID: 6561319688152131542}
+--- !u!114 &5641263199491183855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7252984546563174202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85a1c3170b8abbe49be782dbb1e80eb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7252984546186747077
 PrefabInstance:
   m_ObjectHideFlags: 0

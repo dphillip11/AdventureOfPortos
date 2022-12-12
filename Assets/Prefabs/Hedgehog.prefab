@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 7768453786918024511}
   - component: {fileID: 7768453786918024510}
   - component: {fileID: 7768453786918024482}
-  - component: {fileID: 7768453786918024483}
+  - component: {fileID: 7187394411623961568}
   m_Layer: 0
   m_Name: Hedgehog
   m_TagString: Untagged
@@ -177,7 +177,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &7768453786918024483
+--- !u!114 &7187394411623961568
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -186,10 +186,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7768453786918024505}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ec224f99fe2a5945b6197d35d089975, type: 3}
+  m_Script: {fileID: 11500000, guid: eab9b9ae59ecaca4eaf9b2d10f27a350, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerChaseRange: 3.5
+  playerChaseRange: 5
   chasingAnimationSpeed: 2
   rayLength: 1
   raycastAnchor: {fileID: 7768453786744687858}
