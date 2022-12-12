@@ -1,5 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+<<<<<<< Updated upstream
 --- !u!114 &-9048225810155423366
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -25,6 +26,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &-6874262457481091546
+=======
+--- !u!114 &-7361982506522659449
+>>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -36,8 +40,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1ad086ec349fe149b1a263f1d93946f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
   jumpForceX: 100
   jumpForceY: 125
+=======
+  jumpForceX: 15
+  jumpForceY: 15
+>>>>>>> Stashed changes
 --- !u!1102 &-4853170972890514583
 AnimatorState:
   serializedVersion: 6
@@ -51,7 +60,11 @@ AnimatorState:
   m_Transitions:
   - {fileID: 7688481389300283736}
   m_StateMachineBehaviours:
+<<<<<<< Updated upstream
   - {fileID: -6874262457481091546}
+=======
+  - {fileID: -7361982506522659449}
+>>>>>>> Stashed changes
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -141,7 +154,10 @@ AnimatorState:
   - {fileID: -3364745659994561816}
   m_StateMachineBehaviours:
   - {fileID: 7460079381297559332}
+<<<<<<< Updated upstream
   - {fileID: -9048225810155423366}
+=======
+>>>>>>> Stashed changes
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
