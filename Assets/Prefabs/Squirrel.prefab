@@ -183,6 +183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerChaseRange: 5
+  feathers: {fileID: 1650308560040450996, guid: a723272116ca48142930f86236796b25, type: 3}
 --- !u!1 &4113449664306030410
 GameObject:
   m_ObjectHideFlags: 0

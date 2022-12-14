@@ -8,6 +8,8 @@ public class HealthBarManager : MonoBehaviour
     public List<GameObject> HalfHearts;
     private int health = 8;
     public bool isDead = false;
+    [SerializeField] private float invulnerabilityInterval = 0.5f;
+    private bool isInvulnerable = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,7 +37,7 @@ public class HealthBarManager : MonoBehaviour
 
     public void Damage(int damage)
     {
-        if (!isDead)
+        if (!isDead && !isInvulnerable)
         {
             health -= damage;
             if (health <= 0)
@@ -44,6 +46,14 @@ public class HealthBarManager : MonoBehaviour
                 isDead = true;
             }
             DisplayHearts();
+            isInvulnerable= true;
+            StartCoroutine("IgnoreDamage");
         }
+    }
+
+    private IEnumerator IgnoreDamage()
+    {
+        yield return new WaitForSeconds(invulnerabilityInterval);
+        isInvulnerable = false;
     }
 }

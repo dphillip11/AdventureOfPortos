@@ -7,8 +7,8 @@ public class SquirrelEscape : MonoBehaviour
     [SerializeField] private float playerChaseRange = 5;
     private Animator anim;
     private Transform player;
-    private bool isEscaping = false;
     private float turnBuffer = 0.4f;
+    public ParticleSystem feathers;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +23,6 @@ public class SquirrelEscape : MonoBehaviour
         if (Vector2.Distance(transform.position, player.position) < playerChaseRange)
         {
             anim.SetBool("isEscaping", true);
-            isEscaping = true;
             if (player.position.x < transform.position.x - turnBuffer)
                 transform.localScale = new Vector2(Mathf.Abs(transform.localScale.x), transform.localScale.y);
             if (player.position.x > transform.position.x + turnBuffer)
@@ -32,7 +31,6 @@ public class SquirrelEscape : MonoBehaviour
         else
         {
             anim.SetBool("isEscaping", false);
-            isEscaping = false;
             if (player.position.x < transform.position.x - turnBuffer)
                 transform.localScale = new Vector2(Mathf.Abs(transform.localScale.x), transform.localScale.y);
             if (player.position.x > transform.position.x + turnBuffer)
@@ -42,9 +40,17 @@ public class SquirrelEscape : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        RaycastHit2D raycastHit = Physics2D.Raycast(transform.position, Vector2.down);
-        if (raycastHit.collider != null)
-            anim.SetBool("hasJumped", true);
+        if (collision.gameObject.name == "Portos")
+        {
+            Instantiate(feathers, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
+        else
+        {
+            RaycastHit2D raycastHit = Physics2D.Raycast(transform.position, Vector2.down);
+            if (raycastHit.collider != null)
+                anim.SetBool("hasJumped", true);
+        }
     }
 
 }
